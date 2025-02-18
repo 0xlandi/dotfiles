@@ -4,43 +4,37 @@ case $- in
   *i*) ;;
     *) return;;
 esac
-
+# ---
 # Son't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
-
 # Append to the history file, don't overwrite it.
 shopt -s histappend
-
 # For setting history length see HISTSIZE and HISTFILESIZE.
 HISTSIZE=1000
 HISTFILESIZE=2000
-
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
-
 # Make less more friendly for non-text input files.
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
+# ---
 # Set variable identifying the chroot you work in (used in the prompt below).
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
   debian_chroot=$(cat /etc/debian_chroot)
 fi
-
 # Set a fancy prompt (non-color, unless we know we "want" color).
 case "$TERM" in
   xterm-color|*-256color) color_prompt=yes;;
 esac
-
+# ---
 # Uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt.
 force_color_prompt=yes
-
+# ---
 if [ -n "$force_color_prompt" ]; then
   if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
   # We have color support; assume it's compliant with Ecma-48
@@ -50,7 +44,7 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
-
+# ---
 # Prompt.
 if [ "$color_prompt" = yes ]; then
   # Support Git branches.
@@ -72,7 +66,7 @@ else
   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(git_branch) \[\033[1;36m\]$PROMPT_TIME\[\033[00m\] \$ '
 fi
 unset color_prompt force_color_prompt
-
+# ---
 # If this is an xterm set the title to 'user@host:dir'.
 case "$TERM" in
 xterm*|rxvt*)
@@ -81,7 +75,7 @@ xterm*|rxvt*)
 *)
   ;;
 esac
-
+# ---
 # Enable color support of ls and also add handy aliases.
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -92,15 +86,14 @@ if [ -x /usr/bin/dircolors ]; then
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 fi
-
+# ---
 # Colored GCC warnings and errors.
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
+# ---
 # Alias definitions, in '~/.bash_aliases'
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
-
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

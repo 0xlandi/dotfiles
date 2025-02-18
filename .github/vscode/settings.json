@@ -12,7 +12,7 @@
   "editor.renderLineHighlight": "gutter",
   "workbench.iconTheme": "symbols",
   "workbench.colorTheme": "Min Dark",
-  //
+  // ---
   "editor.semanticHighlighting.enabled": false,
   "editor.minimap.enabled": false,
   "editor.scrollbar.horizontal": "hidden",
